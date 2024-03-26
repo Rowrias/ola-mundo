@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Menu from "./componentes/Menu";
+import PaginaPadrao from "./componentes/PaginaPadrao";
 import Inicio from './paginas/Inicio';
 import SobreMim from './paginas/SobreMim';
-import Menu from "./componentes/Menu";
+import Post from "./paginas/Post";
 import Rodape from "./componentes/Rodape";
-import PaginaPadrao from "./componentes/PaginaPadrao";
+import NaoEncontrada from "./paginas/NaoEncontrada";
 
 function AppRoutes() {
   return(
@@ -12,11 +14,12 @@ function AppRoutes() {
 
       <Routes>
         <Route path="/" element={<PaginaPadrao />}>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/sobremim" element={<SobreMim />} />
+          <Route index element={<Inicio />} />
+          <Route path="sobremim" element={<SobreMim />} />
+          <Route path="posts/:id" element={<Post />} />
         </Route>
                 
-        <Route path="*" element={<div>Pagina não encontrada</div>} />
+        <Route path="*" element={<NaoEncontrada />} />
       </Routes>
 
       <Rodape />
